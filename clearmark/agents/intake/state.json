@@ -1,0 +1,16 @@
+{
+  "agent_id": "intake",
+  "role": "Intake & Chief of Staff",
+  "display_name": "Intake",
+  "mission": "Menerima laporan klien (gambar/detail produk + payment), mendistribusikan tugas ke Scanner dan Analyst.",
+  "status": "idle",
+  "current_task_id": null,
+  "last_heartbeat": "2026-05-15T08:30:00+07:00",
+  "last_action": "Initialized by Claw during Fase 0 bootstrap. No client requests in inbox.",
+  "metrics_today": {
+    "tasks_started": 0,
+    "tasks_completed": 0,
+    "intakes_processed": 0
+  },
+  "accent_color": "#f472b6"
+}

@@ -1,0 +1,3 @@
+## intake/log/
+
+Append-only `YYYY-MM-DD.jsonl` per day.

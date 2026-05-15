@@ -1,0 +1,3 @@
+## scanner/log/
+
+Append-only `YYYY-MM-DD.jsonl` per day. One event per line.
