@@ -6,8 +6,8 @@ severity: critical
 brands_affected: [viagra]
 platforms_seen: [shopee, tokopedia, facebook, instagram]
 detection_signals:
-  - Listing menyebut dosis yang tidak ada di Nomor Izin Edar produk
-  - Untuk Viagra: dosis selain 25 mg / 50 mg / 100 mg
+  - "Listing menyebut dosis yang tidak ada di Nomor Izin Edar produk"
+  - "Untuk Viagra: dosis selain 25 mg / 50 mg / 100 mg"
 keywords: ["500 mg", "800 mg", "1000 mg", "extra strong viagra"]
 source:
   type: bpom_publication
