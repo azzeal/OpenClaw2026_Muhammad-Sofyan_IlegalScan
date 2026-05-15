@@ -1,0 +1,16 @@
+{
+  "agent_id": "analyst",
+  "role": "Analyst",
+  "display_name": "Analyst",
+  "mission": "Brainstorming pola pemalsuan berdasarkan data BPOM dan tren modus (penyamaran nama, platform gelap, dll).",
+  "status": "idle",
+  "current_task_id": null,
+  "last_heartbeat": "2026-05-15T08:30:00+07:00",
+  "last_action": "Completed pattern extraction from BPOM Siaran Pers HM.01.1.2.12.25.19 (Viagra Palsu, 2025-12-29). 4 patterns added to long-term memory.",
+  "metrics_today": {
+    "tasks_started": 1,
+    "tasks_completed": 1,
+    "patterns_added": 4
+  },
+  "accent_color": "#fde047"
+}

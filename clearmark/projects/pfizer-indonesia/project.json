@@ -1,0 +1,91 @@
+{
+  "slug": "pfizer-indonesia",
+  "client_name": "Pfizer Indonesia",
+  "client_legal_name": "PT Pfizer Indonesia",
+  "manufacturer_of_record": "Fareva Amboise",
+  "industry": "pharmaceutical",
+  "category": "obat-keras",
+  "status": "active",
+  "created_at": "2026-05-15T08:30:00+07:00",
+  "created_by": "claw",
+  "seed_basis": "Public BPOM documentation. Pfizer Indonesia has not yet engaged ClearMark as a paying client — this project is initialized from BPOM Siaran Pers as a real-world reference target until onboarding completes.",
+  "products": [
+    {
+      "id": "viagra-25mg",
+      "name": "Viagra 25 mg",
+      "active_ingredient": "Sildenafil Sitrat (= Sildenafil 25 mg)",
+      "therapeutic_class": "Disfungsi Ereksi",
+      "form": "Tablet salut selaput",
+      "packaging": "Dus, 1 blister @ 4 tablet salut selaput",
+      "nie": "DKI1990401417C1"
+    },
+    {
+      "id": "viagra-50mg",
+      "name": "Viagra 50 mg",
+      "active_ingredient": "Sildenafil Sitrat (= Sildenafil 50 mg)",
+      "therapeutic_class": "Disfungsi Ereksi",
+      "form": "Tablet salut selaput",
+      "packaging": "Dus, 1 blister @ 4 tablet salut selaput",
+      "nie": "DKI1690401417A1"
+    },
+    {
+      "id": "viagra-100mg",
+      "name": "Viagra 100 mg",
+      "active_ingredient": "Sildenafil Sitrat (= Sildenafil 100 mg)",
+      "therapeutic_class": "Disfungsi Ereksi",
+      "form": "Tablet salut selaput",
+      "packaging": "Dus, 1 blister @ 4 tablet salut selaput",
+      "nie": "DKI1690401417B1"
+    }
+  ],
+  "watch_platforms": [
+    "shopee",
+    "tokopedia",
+    "tiktokshop",
+    "facebook",
+    "instagram",
+    "twitter"
+  ],
+  "applied_patterns": [
+    "disguised-names",
+    "non-psef-sellers",
+    "impossible-dosage",
+    "kios-labels"
+  ],
+  "stats": {
+    "findings_total": 0,
+    "findings_high_confidence": 0,
+    "reports_filed": 0,
+    "last_scan_started_at": null,
+    "last_scan_completed_at": null
+  },
+  "next_step": {
+    "action": "initial-scan",
+    "owner": "scanner",
+    "due": null,
+    "note": "Baseline sweep across Shopee + Tokopedia + TikTok Shop with the 4 applied patterns. Expected initial yield based on BPOM 2025 takedown stats: dozens to hundreds of candidate listings."
+  },
+  "sources": [
+    {
+      "type": "bpom_publication",
+      "title": "Lampiran 1. Informasi Detil Produk Obat Palsu VIAGRA",
+      "ref": "Siaran Pers HM.01.1.2.12.25.19",
+      "date": "2025-12-29",
+      "url": "https://simpan.pom.go.id/index.php/s/9zGMoLc7M2zCfRQ",
+      "local_file": "evidence/bpom-viagra-palsu.pdf"
+    }
+  ],
+  "legal_basis": [
+    "UU Nomor 17 Tahun 2023 (Kesehatan), Pasal 435 jo. Pasal 138 ayat (2) dan (3)",
+    "UU Nomor 17 Tahun 2023 (Kesehatan), Pasal 436 jo. Pasal 145 ayat (1)",
+    "UU Nomor 8 Tahun 1999 (Perlindungan Konsumen), Pasal 62 ayat (1)"
+  ],
+  "context_stats": {
+    "bpom_takedowns_viagra_links": {
+      "2022": 91,
+      "2023": 1602,
+      "2024": 210,
+      "2025_to_september": 378
+    }
+  }
+}

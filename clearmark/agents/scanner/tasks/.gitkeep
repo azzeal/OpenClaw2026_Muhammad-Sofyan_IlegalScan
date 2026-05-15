@@ -1,0 +1,3 @@
+## scanner/tasks/
+
+One JSON file per active or recent task. See `skills/clearmark-intake/SKILL.md` for the shape.
