@@ -9,7 +9,7 @@ const NAV = [
   { href: '/projects', label: 'Projects', shortcut: 'P', enabled: true },
   { href: '/memory', label: 'Memory', shortcut: 'M', enabled: true },
   { href: '/team', label: 'Team', shortcut: 'E', enabled: true },
-  { href: '/visual', label: 'Visual Office', shortcut: 'V', enabled: false },
+  { href: '/visual', label: 'Visual Office', shortcut: 'V', enabled: true },
 ] as const;
 
 export function Sidebar() {
