@@ -183,6 +183,43 @@ export function listJournal(): JournalEntry[] {
     .sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
+export interface LogEvent {
+  ts: string;
+  event: string;
+  [key: string]: unknown;
+}
+
+export function readLogTail(id: AgentId, limit = 8): LogEvent[] {
+  const dir = path.join(agentDir(id), 'log');
+  if (!existsDir(dir)) return [];
+  const files = fs
+    .readdirSync(dir)
+    .filter((f) => /^\d{4}-\d{2}-\d{2}\.jsonl$/.test(f))
+    .sort()
+    .reverse();
+  const out: LogEvent[] = [];
+  for (const f of files) {
+    const lines = fs.readFileSync(path.join(dir, f), 'utf-8').split(/\r?\n/).filter(Boolean);
+    for (let i = lines.length - 1; i >= 0 && out.length < limit; i--) {
+      try {
+        out.push(JSON.parse(lines[i]) as LogEvent);
+      } catch {}
+    }
+    if (out.length >= limit) break;
+  }
+  return out;
+}
+
+export function getActiveTaskFor(id: AgentId): Task | null {
+  const tasks = listTasksFor(id);
+  if (!tasks.length) return null;
+  return tasks[0];
+}
+
+export function getProject(slug: string): Project | null {
+  return safeReadJson<Project>(path.join(paths.projects, slug, 'project.json'));
+}
+
 export function summarizeWorkspace() {
   const agents = listAgents();
   const projects = listProjects();
