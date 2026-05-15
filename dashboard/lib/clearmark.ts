@@ -220,6 +220,109 @@ export function getProject(slug: string): Project | null {
   return safeReadJson<Project>(path.join(paths.projects, slug, 'project.json'));
 }
 
+export interface Finding {
+  id: string;
+  project_slug: string;
+  discovered_at: string;
+  discovered_by?: string;
+  platform: string;
+  listing_url?: string;
+  seller_name?: string;
+  title?: string;
+  price_idr?: number;
+  claimed_dosage?: string;
+  matched_patterns?: string[];
+  confidence?: number;
+  evidence_files?: string[];
+  status: 'new' | 'confirmed' | 'reported' | 'resolved' | 'dismissed' | string;
+  notes?: string;
+}
+
+export function listFindings(slug: string): Finding[] {
+  const dir = path.join(paths.projects, slug, 'findings');
+  if (!existsDir(dir)) return [];
+  return fs
+    .readdirSync(dir)
+    .filter((f) => f.endsWith('.json'))
+    .map((f) => safeReadJson<Finding>(path.join(dir, f)))
+    .filter((f): f is Finding => !!f)
+    .sort((a, b) => (a.discovered_at < b.discovered_at ? 1 : -1));
+}
+
+export interface ReportFile {
+  filename: string;
+  filed_at: string;
+  title: string;
+  body: string;
+}
+
+export function listReports(slug: string): ReportFile[] {
+  const dir = path.join(paths.projects, slug, 'reports');
+  if (!existsDir(dir)) return [];
+  return fs
+    .readdirSync(dir)
+    .filter((f) => f.endsWith('.md'))
+    .map((f) => {
+      const raw = fs.readFileSync(path.join(dir, f), 'utf-8');
+      const { data, content } = matter(raw);
+      const filed = data.filed_at;
+      const filed_at =
+        filed instanceof Date
+          ? filed.toISOString()
+          : (filed as string | undefined) ?? new Date(0).toISOString();
+      const titleMatch = content.match(/^#\s+(.+)$/m);
+      return {
+        filename: f,
+        filed_at,
+        title: titleMatch?.[1] ?? f.replace(/\.md$/, ''),
+        body: content,
+      };
+    })
+    .sort((a, b) => (a.filed_at < b.filed_at ? 1 : -1));
+}
+
+export function listEvidence(slug: string): Array<{ name: string; size: number }> {
+  const dir = path.join(paths.projects, slug, 'evidence');
+  if (!existsDir(dir)) return [];
+  return fs
+    .readdirSync(dir)
+    .filter((f) => !f.startsWith('.'))
+    .map((f) => ({ name: f, size: fs.statSync(path.join(dir, f)).size }));
+}
+
+export function getPattern(slug: string): Pattern | null {
+  const file = path.join(paths.patterns, `${slug}.md`);
+  try {
+    const raw = fs.readFileSync(file, 'utf-8');
+    const { data, content } = matter(raw);
+    return { ...(data as Omit<Pattern, 'body'>), body: content };
+  } catch {
+    return null;
+  }
+}
+
+export function getJournalDay(date: string): JournalEntry | null {
+  const file = path.join(paths.journal, `${date}.md`);
+  try {
+    const raw = fs.readFileSync(file, 'utf-8');
+    const { data, content } = matter(raw);
+    const rawDate = data.date;
+    const d =
+      rawDate instanceof Date
+        ? rawDate.toISOString().slice(0, 10)
+        : (rawDate as string | undefined) ?? date;
+    return {
+      date: d,
+      authors: data.authors as string[] | undefined,
+      phase: data.phase as string | undefined,
+      body: content,
+      path: file,
+    };
+  } catch {
+    return null;
+  }
+}
+
 export function summarizeWorkspace() {
   const agents = listAgents();
   const projects = listProjects();
