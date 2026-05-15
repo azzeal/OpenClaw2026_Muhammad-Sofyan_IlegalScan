@@ -6,8 +6,8 @@ import { cn } from '@/lib/utils';
 
 const NAV = [
   { href: '/tasks', label: 'Tasks', shortcut: 'T', enabled: true },
-  { href: '/projects', label: 'Projects', shortcut: 'P', enabled: false },
-  { href: '/memory', label: 'Memory', shortcut: 'M', enabled: false },
+  { href: '/projects', label: 'Projects', shortcut: 'P', enabled: true },
+  { href: '/memory', label: 'Memory', shortcut: 'M', enabled: true },
   { href: '/team', label: 'Team', shortcut: 'E', enabled: true },
   { href: '/visual', label: 'Visual Office', shortcut: 'V', enabled: false },
 ] as const;
