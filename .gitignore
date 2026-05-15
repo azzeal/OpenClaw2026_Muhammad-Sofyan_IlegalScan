@@ -1,0 +1,11 @@
+node_modules/
+dashboard/.next/
+dashboard/out/
+.env*.local
+*.log
+.DS_Store
+
+clearmark/.index.db
+clearmark/.index.db-journal
+clearmark/.index.db-wal
+clearmark/.index.db-shm

@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --font-mono: ui-monospace, 'JetBrains Mono', 'Fira Code', monospace;
+  }
+
+  html,
+  body {
+    background-color: theme('colors.bg.base');
+    color: theme('colors.ink.DEFAULT');
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background-image:
+      radial-gradient(circle at 20% -10%, rgba(34, 211, 238, 0.06), transparent 40%),
+      radial-gradient(circle at 110% 10%, rgba(244, 114, 182, 0.05), transparent 50%),
+      linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: auto, auto, 32px 32px, 32px 32px;
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  .panel {
+    @apply rounded-xl border border-bg-line bg-bg-panel/80 backdrop-blur-sm;
+  }
+  .panel-raised {
+    @apply rounded-xl border border-bg-line bg-bg-raised/80 backdrop-blur-sm;
+  }
+  .label {
+    @apply font-mono text-[10px] uppercase tracking-[0.18em] text-ink-muted;
+  }
+  .kbd {
+    @apply rounded border border-bg-line bg-bg-raised px-1.5 py-0.5 font-mono text-[10px] text-ink-dim;
+  }
+}

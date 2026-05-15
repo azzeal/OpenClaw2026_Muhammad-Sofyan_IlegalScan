@@ -1,0 +1,4 @@
+# Intake inbox.
+# New client requests land here as JSON files, one per request.
+# Filename: <iso8601-timestamp>-<short-uuid>.json
+# Picked up by the Intake agent.

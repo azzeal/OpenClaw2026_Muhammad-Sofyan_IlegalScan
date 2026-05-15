@@ -1,0 +1,16 @@
+{
+  "agent_id": "scanner",
+  "role": "Scanner",
+  "display_name": "Scanner",
+  "mission": "Menelusuri Shopee dan platform e-commerce untuk produk tiruan, menyusun laporan temuan.",
+  "status": "idle",
+  "current_task_id": null,
+  "last_heartbeat": "2026-05-15T08:30:00+07:00",
+  "last_action": "Initialized by Claw during Fase 0 bootstrap. Awaiting first scan task from Intake.",
+  "metrics_today": {
+    "tasks_started": 0,
+    "tasks_completed": 0,
+    "findings_logged": 0
+  },
+  "accent_color": "#22d3ee"
+}
