@@ -1,0 +1,11 @@
+{
+  "request_id": "sample-please-rename-and-replace-urls",
+  "received_at": "2026-05-15T16:32:00+07:00",
+  "client_name": "Pfizer Indonesia",
+  "project_slug": "pfizer-indonesia",
+  "target_urls": [
+    "https://en.wikipedia.org/wiki/Sildenafil",
+    "https://example.com/"
+  ],
+  "instructions": "Sample request — universally-fetchable URLs so the runner can demo without TLS-store quirks. Wikipedia's Sildenafil article will hit the disguised-names regex via plain mentions of 'Viagra'; example.com is a control URL with no expected matches. In production, replace with real marketplace listing URLs collected from operator triage."
+}

@@ -1,0 +1,23 @@
+{
+  "name": "clearmark-runner",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "OpenClaw runtime for ClearMark — executes Scanner, Intake, and Analyst against the clearmark/ filesystem contract.",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "clearmark": "tsx src/cli.ts",
+    "run:intake": "tsx src/cli.ts intake",
+    "run:scanner": "tsx src/cli.ts scanner",
+    "run:analyst": "tsx src/cli.ts analyst",
+    "run:all": "tsx src/cli.ts all"
+  },
+  "dependencies": {
+    "gray-matter": "^4.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.1",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}

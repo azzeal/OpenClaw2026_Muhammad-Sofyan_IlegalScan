@@ -1,0 +1,145 @@
+.room {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 14px;
+  padding: 18px 14px 14px;
+  background: rgba(7, 10, 19, 0.6);
+  overflow: hidden;
+  min-height: 360px;
+  box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.5);
+}
+
+.room::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.02) 0px,
+      rgba(255, 255, 255, 0.02) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+  pointer-events: none;
+}
+
+.floor {
+  position: absolute;
+  bottom: 60px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  opacity: 0.5;
+}
+
+.label {
+  position: relative;
+  font-family: ui-monospace, 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.figureWrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+}
+
+/* Idle: gentle breath. */
+.idle .figure {
+  animation: breath 3.4s ease-in-out infinite;
+}
+
+/* Busy: tiny head-bob, fast. */
+.busy .figure {
+  animation: bob 0.45s steps(2) infinite;
+}
+
+@keyframes breath {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-1px); }
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+/* Z z z floats up and fades when idle. */
+.zzz {
+  position: absolute;
+  top: 8px;
+  right: 18%;
+  opacity: 0.75;
+  animation: floatZ 4s ease-in-out infinite;
+}
+
+@keyframes floatZ {
+  0% { transform: translateY(4px); opacity: 0; }
+  20% { opacity: 0.75; }
+  100% { transform: translateY(-12px); opacity: 0; }
+}
+
+/* Sparks emit upward when busy. */
+.spark {
+  position: absolute;
+  top: 30%;
+  animation: emitSpark 1.6s ease-out infinite;
+  opacity: 0;
+}
+
+.spark1 { left: 22%; animation-delay: 0s; }
+.spark2 { left: 55%; animation-delay: 0.5s; }
+.spark3 { left: 78%; animation-delay: 1s; }
+
+@keyframes emitSpark {
+  0% { transform: translateY(8px) scale(0.6); opacity: 0; }
+  20% { opacity: 0.9; }
+  100% { transform: translateY(-22px) scale(1); opacity: 0; }
+}
+
+/* Monitor pulse for busy. */
+.monitor.busy {
+  animation: pulseGlow 1.1s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { filter: drop-shadow(0 0 4px currentColor); }
+  50% { filter: drop-shadow(0 0 12px currentColor); }
+}
+
+/* Ticker auto-scroll fade between rows. */
+.tickerRow {
+  animation: tickerIn 0.4s ease-out;
+}
+
+@keyframes tickerIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Subtle CRT scanline on the whole office canvas. */
+.canvas::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.0) 0px,
+    rgba(0, 0, 0, 0.0) 2px,
+    rgba(0, 0, 0, 0.18) 2px,
+    rgba(0, 0, 0, 0.18) 3px
+  );
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
